@@ -29,7 +29,7 @@ exam_Y = exam['分数']
 # plt.title('Exam Data')
 
 # 3.划分训练集与测试集
-X_train, X_test, Y_train, Y_test = train_test_split(exam_X,exam_Y, train_size = 0.8)
+X_train, X_test, Y_train, Y_test = train_test_split(exam_X,exam_Y, train_size = 0.7)
 
 # 导入线性回归
 
@@ -61,6 +61,10 @@ plt.plot(X_train,Y_train_pred,color='black',label='best line')
 
 plt.legend(loc=2)
 
+#测试精度
+jingdu = model.score(X_test,Y_test)
+
+
 
 if __name__ == '__main__':
     # print(exam.head())
@@ -69,5 +73,6 @@ if __name__ == '__main__':
 
     # 3.
     print('该模型的简单线性回归方程为y = {} + {} * x'.format(a, b))
+    print('精度：'+str(jingdu))
 
     plt.show()
