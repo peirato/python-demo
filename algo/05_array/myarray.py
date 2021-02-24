@@ -4,10 +4,42 @@ class MyArray:
         self._data = []
         self._capacity = capacity
 
-    def insert(self, index, value):
-        if len(self) >= self._capacity
-        pass
+    def __getitem__(self, position: int) -> object:
+        return self._data[position]
 
+    def __setitem__(self, index: int, value: object):
+        self._data[index] = value
+
+    def __len__(self) -> int:
+        return len(self._data)
+
+    def __iter__(self):
+        for item in self._data:
+            yield item
+
+    def find(self, index: int) -> object:
+        try:
+            return self._data[index]
+        except IndexError:
+            return None
+
+    def delete(self, index: int) -> bool:
+        try:
+            self._data.pop(index)
+            return True
+        except IndexError:
+            return False
+
+    def insert(self, index: int, value: int) -> bool:
+        if len(self) >= self._capacity:
+            return False
+        else:
+            self._data.insert(index, value)
+            return True
+
+    def print_all(self):
+        for item in self:
+            print(item)
 
 def test_array():
     array = MyArray(5)
